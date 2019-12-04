@@ -32,7 +32,7 @@ public class RealSenseServer : MonoBehaviour {
 
         OSCHandler.Instance.serverInit(serverName,inComingPort); //init OSC　//----------変更
         servers = new Dictionary<string, ServerLog>();
-        cameraAdjuster = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetComponent<CameraAdjuster>();
+        cameraAdjuster = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).GetComponent<CameraAdjuster>();
     }
 
     // Update is called once per frame

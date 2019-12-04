@@ -40,7 +40,7 @@ public class CharacterMovement : MonoBehaviour {
 
         angle = new Vector3(rotV, rotH, 0.0f);
 
-        this.transform.GetChild(0).GetChild(0).GetChild(0).transform.Rotate(angle);
+        this.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).transform.Rotate(angle);
 
         Vector3 movement = Vector3.zero;
 		float moveLR = 0.0f;
@@ -50,7 +50,7 @@ public class CharacterMovement : MonoBehaviour {
 	    moveFB = Input.GetAxis(key.moveV) * VelocityController.speed * 200.0f;
 
         movement = new Vector3(moveLR, 0.0f, moveFB);
-        movement = this.transform.GetChild(0).GetChild(0).GetChild(0).rotation * movement;
+        movement = this.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).rotation * movement;
 
         character.velocity = movement * Time.deltaTime;
 	}

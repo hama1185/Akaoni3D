@@ -30,6 +30,10 @@ public class FlagClient : MonoBehaviour {
         OSCHandler.Instance.clientInit("Akaoni", ip,port);//ipには接続先のipアドレスの文字列を入れる。
     }
 
+    static public void StartRealSense(){
+        OSCHandler.Instance.SendMessageToClient("Akaoni","/RSstart","OK");
+    }
+
     static public void SpawnSend(Vector3 point){
         List<float> pointList = new List<float>();
         pointList.Add(point.x);
