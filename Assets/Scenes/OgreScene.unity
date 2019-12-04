@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0.5
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 2039a0ad0a9d05549928b70362f54902, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: f39e2857ccd6b194d9b04c54fd60a48e, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 0.5
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 938037005}
-  m_IndirectSpecularColor: {r: 0.12725121, g: 0.12939522, b: 0.12936518, a: 0.5}
+  m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.061838403, g: 0.063286625, b: 0.0635357, a: 0.5}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1075,6 +1075,8 @@ GameObject:
   - component: {fileID: 839895506}
   - component: {fileID: 839895508}
   - component: {fileID: 839895507}
+  - component: {fileID: 839895510}
+  - component: {fileID: 839895509}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1121,6 +1123,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultText: {fileID: 723709434}
+--- !u!114 &839895509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839895505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc719dce22b1637408ace147fe1b58d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ip: 
+  port: 0
+--- !u!114 &839895510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839895505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4367865fef094814eaab18dd10ef5210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serverName: 
+  inComingPort: 0
 --- !u!1 &850431025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1337,12 +1367,12 @@ GameObject:
   - component: {fileID: 938037006}
   - component: {fileID: 938037005}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Directional Light (Debug)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &938037005
 Light:
   m_ObjectHideFlags: 0
@@ -1353,7 +1383,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 1
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.01
   m_Range: 10
   m_SpotAngle: 30
@@ -1667,11 +1697,11 @@ GameObject:
   - component: {fileID: 1309159981}
   - component: {fileID: 1309159980}
   - component: {fileID: 1309159989}
-  - component: {fileID: 1309159984}
-  - component: {fileID: 1309159986}
   - component: {fileID: 1309159987}
   - component: {fileID: 1309159985}
   - component: {fileID: 1309159988}
+  - component: {fileID: 1309159986}
+  - component: {fileID: 1309159984}
   m_Layer: 0
   m_Name: Ogre
   m_TagString: Player
@@ -1754,24 +1784,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &1309159984
-CharacterController:
+--- !u!114 &1309159984
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309159979}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3837ac9c8fb86b4cac84157a1b72a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serverName: 
+  inComingPort: 0
 --- !u!114 &1309159985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1793,11 +1819,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1309159979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f675afa708b58a418919b1163cb41d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 645769215e4783f4f93dad909c4230f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ip: 192.168.11.58
-  port: 8001
+  ip: 
+  port: 0
 --- !u!114 &1309159987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2239,10 +2265,10 @@ GameObject:
   - component: {fileID: 1672143073}
   - component: {fileID: 1672143072}
   - component: {fileID: 1672143071}
-  - component: {fileID: 1672143076}
   - component: {fileID: 1672143075}
   - component: {fileID: 1672143077}
   - component: {fileID: 1672143078}
+  - component: {fileID: 1672143076}
   m_Layer: 0
   m_Name: Villager
   m_TagString: Enemy
@@ -2345,12 +2371,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1672143070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07baed1e25dbcfe4a87e2ea9b7fe7305, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d41934edf871364d96a98863953d971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverName: 192.168.11.58
-  inComingPort: 8000
-  flag: {fileID: 723709434}
+  serverName: 
+  inComingPort: 0
 --- !u!114 &1672143077
 MonoBehaviour:
   m_ObjectHideFlags: 0

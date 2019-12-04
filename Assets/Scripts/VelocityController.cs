@@ -6,7 +6,7 @@ public class VelocityController : MonoBehaviour {
     public static Vector3 inputAxis_Left {get; set;} = Vector3.zero;
     public Vector3 velocity {get; set;}
     float MAX_SPEED = 5.0f;
-    float speed;
+    static public float speed;
     float level;
     (string moveH, string moveV, string viewH, string viewV) key;
 
