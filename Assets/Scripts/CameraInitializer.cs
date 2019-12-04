@@ -13,7 +13,7 @@ public class CameraInitializer : MonoBehaviour {
 
     void Update() {
         if (!Manager.setuped) {
-            this.transform.rotation = Quaternion.Inverse(phoneCam.transform.localRotation);
+            this.transform.rotation = Quaternion.Inverse(Quaternion.Euler(0.0f, phoneCam.transform.localEulerAngles.y, 0.0f));
         }
     }
 }
