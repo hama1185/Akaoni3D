@@ -39,7 +39,7 @@ public class Manager : MonoBehaviour {
             Master.flagCount++;
         }
         else {
-            Client.ReturnPflag();
+            FlagClient.ReturnPflag();
         }
         // preparedFlag が true になった後に地形生成をする
         // 本来は地形生成後 startedFlag を true にする
