@@ -19,11 +19,11 @@ public class EnemyStatusServer : MonoBehaviour {
         string myIP = ipGetter.GetIp();
 
         if (myIP == HostList.phone1.ip) {
-            serverName = HostList.phone2.ip;
+            serverName = HostList.phone2.server_status;
             inComingPort = HostList.phone2.port_status;
         }
         else {
-            serverName = HostList.phone1.ip;
+            serverName = HostList.phone1.server_status;
             inComingPort = HostList.phone1.port_status;
         }
         
