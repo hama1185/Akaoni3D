@@ -30,8 +30,11 @@ public class FlagClient : MonoBehaviour {
         OSCHandler.Instance.clientInit("Akaoni", ip,port);//ipには接続先のipアドレスの文字列を入れる。
     }
 
-    static public void StartRealSense(){
-        OSCHandler.Instance.SendMessageToClient("Akaoni","/RSstart","OK");
+    static public async void StartRealSense(){
+        for (int i = 0; i < 20; i++) {
+            OSCHandler.Instance.SendMessageToClient("Akaoni","/RSstart","OK");//本来True
+            await Task.Delay(15);
+        }
     }
 
     static public void SpawnSend(Vector3 point){
@@ -43,15 +46,15 @@ public class FlagClient : MonoBehaviour {
     }
 
     static public async void ReturnPflag(){
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 20; i++) {
             OSCHandler.Instance.SendMessageToClient("Akaoni","/Pflag","OK");//本来True
             await Task.Delay(15);
         }
     }
     static public async void ReturnSflag(){
-        for (int i = 0; i < 30; i++) {
-            await Task.Delay(15);
+        for (int i = 0; i < 20; i++) {
             OSCHandler.Instance.SendMessageToClient("Akaoni","/Sflag","OK");//本来True
+            await Task.Delay(15);
         }
     }
 }

@@ -21,37 +21,37 @@ public class CharacterMovement : MonoBehaviour {
         
         
         
-        /// RealSenseによる入力
-        // character.velocity = velocityController.velocity;
+        // / RealSenseによる入力
+        character.velocity = velocityController.velocity;
 
-        /// Debug.Log("speed : " + character.velocity.magnitude + "    vecter : " + character.velocity);
-        /// Debug.Log(Time.deltaTime);
+        // / Debug.Log("speed : " + character.velocity.magnitude + "    vecter : " + character.velocity);
+        // / Debug.Log(Time.deltaTime);
 
 
 
 
         /// ゲームパッドによる入力
-        Vector3 angle = Vector3.zero;
-        float rotH = 0.0f;
-        float rotV = 0.0f;
+        // Vector3 angle = Vector3.zero;
+        // float rotH = 0.0f;
+        // float rotV = 0.0f;
 
-        rotH = Input.GetAxis(key.viewH) * sensitivity;
-	    // rotV = Input.GetAxis(key.viewV) * sensibility;
+        // rotH = Input.GetAxis(key.viewH) * sensitivity;
+	    // // rotV = Input.GetAxis(key.viewV) * sensibility;
 
-        angle = new Vector3(rotV, rotH, 0.0f);
+        // angle = new Vector3(rotV, rotH, 0.0f);
 
-        this.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).transform.Rotate(angle);
+        // this.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).transform.Rotate(angle);
 
-        Vector3 movement = Vector3.zero;
-		float moveLR = 0.0f;
-        float moveFB = 0.0f;
+        // Vector3 movement = Vector3.zero;
+		// float moveLR = 0.0f;
+        // float moveFB = 0.0f;
         
-        moveLR = Input.GetAxis(key.moveH) * VelocityController.speed * 200.0f;
-	    moveFB = Input.GetAxis(key.moveV) * VelocityController.speed * 200.0f;
+        // moveLR = Input.GetAxis(key.moveH) * VelocityController.speed * 200.0f;
+	    // moveFB = Input.GetAxis(key.moveV) * VelocityController.speed * 200.0f;
 
-        movement = new Vector3(moveLR, 0.0f, moveFB);
-        movement = this.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).rotation * movement;
+        // movement = new Vector3(moveLR, 0.0f, moveFB);
+        // movement = this.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).rotation * movement;
 
-        character.velocity = movement * Time.deltaTime;
+        // character.velocity = movement * Time.deltaTime;
 	}
 }
