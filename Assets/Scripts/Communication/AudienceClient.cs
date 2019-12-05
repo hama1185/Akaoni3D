@@ -13,6 +13,8 @@ public class AudienceClient : MonoBehaviour {
 	#endregion //----------追記
     // Start is called before the first frame update
 
+    string address;
+
     GameObject CameraAngle;
 
     void Awake() {
@@ -33,6 +35,13 @@ public class AudienceClient : MonoBehaviour {
     
     void Start() {
         CameraAngle = this.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject;
+
+        if(GameObject.FindWithTag("Player").name == "Ogre"){
+            address = "/Ogre";
+        }
+        else {
+            address = "/Villager";
+        }
     }
 
     void Update() {
@@ -47,6 +56,6 @@ public class AudienceClient : MonoBehaviour {
         transformList.Add(CameraAngle.transform.rotation.z);
         transformList.Add(CameraAngle.transform.rotation.w);
 
-        OSCHandler.Instance.SendMessageToClient("Akaoni","/position",transformList);//Akaoniでいいのかな
+        OSCHandler.Instance.SendMessageToClient("Akaoni",address,transformList);//Akaoniでいいのかな
     }
 }
