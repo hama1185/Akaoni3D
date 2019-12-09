@@ -6,20 +6,37 @@ using UnityEngine.UI;
 public class Manager : MonoBehaviour {
     public Text resultText;
     static float time = 0.0f;
+    float end = 100.0f;
+    static public bool setuped = false;
     static public bool pointedFlag = false;
     static public bool preparedFlag = false;
     static public bool startFlag = false;
     static public bool endFlag = false;
     public static Vector3 spawnPoint {set; get;} = Vector3.zero;
+    float setupTime = 0.0f;
+    float setupEnd = 30.0f;
+    public Text timeText;
 
     void Update() {
+        if (setupTime > setupEnd && !setuped) {
+            setuped = true;
+            FlagClient.StartRealSense();
+            timeText.transform.position = new Vector3(-300.0f, 170.0f, 0.0f);
+            timeText.text = "";
+        }
+        else if (!setuped){
+            setupTime += Time.deltaTime;
+            timeText.text = "setup now... \n" + (setupEnd - setupTime).ToString();
+            // Debug.Log(setupTime);
+        }
         if (spawnPoint != Vector3.zero && !pointedFlag) {
             CreateSpawnPointMarker(spawnPoint);
             pointedFlag = true;
         }
         if (startFlag) {
             time += Time.deltaTime;
-            if (time >= 100.0f && !endFlag) {
+            timeText.text = "time : " + (end - time).ToString();
+            if (time >= end && !endFlag) {
                 Debug.Log("Time Up");
                 endFlag = true;
                 if(GameObject.FindWithTag("Player").name == "Villager"){
@@ -39,7 +56,7 @@ public class Manager : MonoBehaviour {
             Master.flagCount++;
         }
         else {
-            Client.ReturnPflag();
+            FlagClient.ReturnPflag();
         }
         // preparedFlag が true になった後に地形生成をする
         // 本来は地形生成後 startedFlag を true にする
@@ -51,7 +68,8 @@ public class Manager : MonoBehaviour {
         GameObject.Find("Walls").transform.GetChild(0).gameObject.SetActive(true);
         if(GameObject.FindWithTag("Player").name == "Ogre"){
             GameObject.FindWithTag("Enemy").GetComponent<FootSpawn>().enabled = true;
-            GameObject.FindWithTag("Player").transform.GetChild(0).gameObject.GetComponent<PostEffect>().enabled = true;
+            /// ↓ debug中はコメントアウトしてる
+            // GameObject.FindWithTag("Player").transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject.GetComponent<PostEffect>().enabled = true;
         }
     }
 

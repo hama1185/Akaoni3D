@@ -15,7 +15,7 @@ public class Master : MonoBehaviour {
     void Update(){
         if(flagCount >= 2){
             if(!Manager.startFlag){
-                Client.ReturnSflag();//村人Manager.GameStartさせる
+                FlagClient.ReturnSflag();//村人Manager.GameStartさせる
                 Manager.GameStart();//鬼Manager.gameStartさせる
             }
         }
@@ -40,7 +40,7 @@ public class Master : MonoBehaviour {
 
         Manager.spawnPoint = ogreSpawnPoint;
         //OSC
-        Client.SpawnSend(villagerSpawnPoint);
+        FlagClient.SpawnSend(villagerSpawnPoint);
     }
     
     void InitializePoints() {

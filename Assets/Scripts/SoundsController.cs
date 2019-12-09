@@ -23,25 +23,9 @@ public class SoundsController : MonoBehaviour {
             footStepAudio.Play();
         }
 
-        if (Input.GetKey(KeyCode.UpArrow)) {
-            PlayerStatus.tension += 0.1f * Time.deltaTime;
-            Debug.Log("Player : " + PlayerStatus.tension);
-        }
-        if (Input.GetKey(KeyCode.DownArrow)) {
-            PlayerStatus.tension -= 0.1f * Time.deltaTime;
-            Debug.Log("Player : " + PlayerStatus.tension);
-        }
         heartBeatAudio.volume = PlayerStatus.tension;
         heartBeatAudio.pitch = 1.0f + PlayerStatus.tension;
 
-        if (Input.GetKey(KeyCode.RightArrow)) {
-            EnemyStatus.tension += 0.1f * Time.deltaTime;
-            Debug.Log("Enemy : " + EnemyStatus.tension);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow)) {
-            EnemyStatus.tension -= 0.1f * Time.deltaTime;
-            Debug.Log("Enemy : " + EnemyStatus.tension);
-        }
         footStepAudio.volume = 0.5f + EnemyStatus.tension / 2.0f;
     }
 }

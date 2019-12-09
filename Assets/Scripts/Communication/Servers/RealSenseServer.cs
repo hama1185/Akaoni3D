@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Text;
 using UnityOSC;
-using UnityEngine.UI;
+using System.Text;
+using System.Threading.Tasks;
 
-public class Server : MonoBehaviour{
+public class RealSenseServer : MonoBehaviour {
     // Start is called before the first frame update
     #region Network Settings //----------追記
 	public string serverName;
@@ -13,36 +13,26 @@ public class Server : MonoBehaviour{
 	#endregion //----------追記
 
 	private Dictionary<string, ServerLog> servers;
-
+    
     CameraAdjuster cameraAdjuster;
-
-    static bool limitPflag = false;
-    static bool limitSflag = false;
-
-    public Text flag;
 
     void Awake() {
         IpGetter ipGetter = new IpGetter();
         string myIP = ipGetter.GetIp();
 
-        if (myIP == IpGetter.phone1IP) {
-            serverName = IpGetter.phone2IP;
+        if (myIP == HostList.phone1.ip) {
+            serverName = HostList.phone2.server_realsense;
+            inComingPort = HostList.phone2.port_realsense;
         }
         else {
-            serverName = IpGetter.phone1IP;
+            serverName = HostList.phone1.server_realsense;
+            inComingPort = HostList.phone1.port_realsense;
         }
-        
-        if (this.gameObject.name == "Villager") {
-            inComingPort = 8000;
-        }
-        else {
-            inComingPort = 8001;
-        }
-        Debug.Log("server IP : " + serverName + "   port : " + inComingPort);
+        // Debug.Log("server IP : " + serverName + "   port : " + inComingPort);
 
         OSCHandler.Instance.serverInit(serverName,inComingPort); //init OSC　//----------変更
         servers = new Dictionary<string, ServerLog>();
-        cameraAdjuster = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetComponent<CameraAdjuster>();
+        cameraAdjuster = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).GetComponent<CameraAdjuster>();
     }
 
     // Update is called once per frame
@@ -91,34 +81,6 @@ public class Server : MonoBehaviour{
                     cameraAdjuster.sentAngle = eulerY;
                     cameraAdjuster.Adjust();
                 }
-                if(item.Value.packets[lastPacketIndex].Address.ToString() == "/position"){
-                    Vector3 enemyPosition;
-                    float rotY;
-                    enemyPosition.x = (float)item.Value.packets[lastPacketIndex].Data[0];
-                    enemyPosition.y = (float)item.Value.packets[lastPacketIndex].Data[1];
-                    enemyPosition.z = (float)item.Value.packets[lastPacketIndex].Data[2];
-                    rotY = (float)item.Value.packets[lastPacketIndex].Data[3];
-                    EnemyPositionTracker.enemyPosition = enemyPosition;
-                    FootSpawn.enemyAngle = rotY;
-				}
-				if(item.Value.packets[lastPacketIndex].Address.ToString() == "/Spawn"){
-                    // Debug.Log("a");
-                    Vector3 spawnPosition;
-                    spawnPosition.x = (float)item.Value.packets[lastPacketIndex].Data[0];
-                    spawnPosition.y = (float)item.Value.packets[lastPacketIndex].Data[1];
-                    spawnPosition.z = (float)item.Value.packets[lastPacketIndex].Data[2];
-                    Manager.spawnPoint = spawnPosition;
-				}
-                if(item.Value.packets[lastPacketIndex].Address.ToString() == "/Pflag" && !limitPflag){
-                    // flag.text = "get preparedFlag";
-                    Master.flagCount++;
-                    limitPflag = true;
-				}
-                if(item.Value.packets[lastPacketIndex].Address.ToString() == "/Sflag" && !limitSflag){
-                    // flag.text = "get startedFlag";
-                    Manager.GameStart();
-                    limitSflag = true;
-				}
 			}
 		}
         // Debug.Log(Time.deltaTime);

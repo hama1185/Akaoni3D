@@ -14,6 +14,17 @@ public class EnemyStatus : MonoBehaviour {
         player = GameObject.FindWithTag("Player").transform;
     }
 
+    void Update() {
+        if (Input.GetKey(KeyCode.RightArrow)) {
+            tension += 0.1f * Time.deltaTime;
+            Debug.Log("Enemy : " + tension);
+        }
+        if (Input.GetKey(KeyCode.LeftArrow)) {
+            tension -= 0.1f * Time.deltaTime;
+            Debug.Log("Enemy : " + tension);
+        }
+    }
+
     // void Update() {
     // //     distaneWithPlayer = Mathf.Pow(Mathf.Pow(Mathf.Abs(this.transform.position.x - player.position.x), 2) + Mathf.Pow(Mathf.Abs(this.transform.position.z - player.position.z), 2), 0.5f);
     // // }
