@@ -30,7 +30,7 @@ public class AudienceClient : MonoBehaviour {
         }
         // Debug.Log("client IP : " + ip + "   port : " + port);
 
-        OSCHandler.Instance.clientInit("Akaoni", ip,port);//ipには接続先のipアドレスの文字列を入れる。
+        OSCHandler.Instance.clientInit("akaoni", ip,port);//ipには接続先のipアドレスの文字列を入れる。
     }
     
     void Start() {
@@ -45,6 +45,7 @@ public class AudienceClient : MonoBehaviour {
     }
 
     void Update() {
+        // Debug.Log("a");
         List<float> transformList = new List<float>();
 
         transformList.Add(this.transform.position.x);
@@ -56,6 +57,6 @@ public class AudienceClient : MonoBehaviour {
         transformList.Add(CameraAngle.transform.rotation.z);
         transformList.Add(CameraAngle.transform.rotation.w);
 
-        OSCHandler.Instance.SendMessageToClient("Akaoni",address,transformList);//Akaoniでいいのかな
+        OSCHandler.Instance.SendMessageToClient("akaoni",address,transformList);//Akaoniでいいのかな
     }
 }

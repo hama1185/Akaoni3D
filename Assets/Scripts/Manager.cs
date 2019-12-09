@@ -27,7 +27,7 @@ public class Manager : MonoBehaviour {
         else if (!setuped){
             setupTime += Time.deltaTime;
             timeText.text = "setup now... \n" + (setupEnd - setupTime).ToString();
-            Debug.Log(setupTime);
+            // Debug.Log(setupTime);
         }
         if (spawnPoint != Vector3.zero && !pointedFlag) {
             CreateSpawnPointMarker(spawnPoint);

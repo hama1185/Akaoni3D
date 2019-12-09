@@ -32,7 +32,7 @@ public class FlagClient : MonoBehaviour {
 
     static public async void StartRealSense(){
         for (int i = 0; i < 20; i++) {
-            OSCHandler.Instance.SendMessageToClient("Akaoni","/RSstart","OK");//本来True
+            OSCHandler.Instance.SendMessageToClient("Akaoni","/start","start");
             await Task.Delay(15);
         }
     }

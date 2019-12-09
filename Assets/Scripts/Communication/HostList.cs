@@ -4,26 +4,26 @@ using UnityEngine;
 
 static public class HostList {
     static public Host phone1 = new Host(
-        "192.168.11.24",
+        "192.168.11.58",
         "status",
         "flag",
         "realsense",
-        8000,
-        8001,
+        8005,
+        8006,
         8002,
-        8003
+        8000
     );
     static public Host phone2 = new Host(
-        "192.168.11.30",
+        "192.168.11.59",
         "status",
         "flag",
         "realsense",
-        8001,
-        8000,
+        8006,
+        8005,
         8002,
-        8004
+        8001
     );
-    static public string ip_audience = "192.168.11.7";
+    static public string ip_audience = "192.168.11.60";
 
     public class Host {
         public string ip {get; set;}
