@@ -20,7 +20,7 @@ public class Manager : MonoBehaviour {
     void Update() {
         if (setupTime > setupEnd && !setuped) {
             setuped = true;
-            FlagClient.StartRealSense();
+            RealSenceClient.StartRealSense();
             timeText.transform.position = new Vector3(-300.0f, 170.0f, 0.0f);
             timeText.text = "";
         }
