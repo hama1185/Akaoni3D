@@ -24,7 +24,7 @@ public class EnemyStatusServer : MonoBehaviour {
         else {
             inComingPort = HostList.phone1.port_status;
         }
-        serverName = HostList.serverName.enemy;
+        serverName = HostList.serverName.status;
         
         // Debug.Log("server IP : " + serverName + "   port : " + inComingPort);
 

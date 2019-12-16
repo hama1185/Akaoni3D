@@ -27,7 +27,7 @@ public class FlagServer : MonoBehaviour {
         else {
             inComingPort = HostList.phone1.port_flag;
         }
-        serverName = HostList.serverName.enemy;
+        serverName = HostList.serverName.flag;
 
         // Debug.Log("server IP : " + serverName + "   port : " + inComingPort);
 

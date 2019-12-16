@@ -11,8 +11,7 @@ static public class HostList {
         8002,
         8005,
         8007,
-        8008,
-        8009
+        8008
     );
     static public Host phone2 = new Host(
         "192.168.11.59",
@@ -22,19 +21,17 @@ static public class HostList {
         8002,
         8006,
         8007,
-        8008,
-        8009
+        8008
     );
     static public string ip_audience = "192.168.11.60";
-    static public string ip_umpire = "92.168.11.24";
+    static public string ip_umpire = "192.168.11.24";
 
     static public ID clientID = new ID(
         "enemy",
         "raspberry",
-        "audenece",
-        "umpire"
+        "audenece"
     );
-    static public ID serverName = new ID(
+    static public ServerName serverName = new ServerName(
         "status",
         "flag",
         "realsence",
@@ -49,10 +46,9 @@ static public class HostList {
         public int port_realsense {get; set;}
         public int port_audienceserver {get; set;}
         public int port_raspberrypi {get; set;}
-        public int port_umpireSend {get; set;}
         public int port_umpireReceive {get; set;}
 
-        public Host(string ip1, string ip2, int port1, int port2, int port3, int port4, int port5, int port6, int port7) {
+        public Host(string ip1, string ip2, int port1, int port2, int port3, int port4, int port5, int port6) {
             ip = ip1;
             ip_raspberrypi = ip2;
             port_status = port1;
@@ -60,8 +56,7 @@ static public class HostList {
             port_realsense = port3;
             port_audienceserver = port4;
             port_raspberrypi = port5;
-            port_umpireSend = port6;
-            port_umpireReceive = port7;
+            port_umpireReceive = port6;
         }
     }
 
@@ -69,13 +64,11 @@ static public class HostList {
         public string enemy;
         public string raspberrypi;
         public string audience;
-        public string umpire;
 
-        public ID(string id1, string id2, string id3, string id4) {
+        public ID(string id1, string id2, string id3) {
             enemy = id1;
             raspberrypi = id2;
             audience = id3;
-            umpire = id4;
         }
     }
 

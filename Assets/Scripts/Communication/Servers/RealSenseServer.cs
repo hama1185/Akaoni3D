@@ -26,7 +26,7 @@ public class RealSenseServer : MonoBehaviour {
         else {
             inComingPort = HostList.phone1.port_realsense;
         }
-        serverName = HostList.serverName.raspberrypi;
+        serverName = HostList.serverName.realsense;
 
         // Debug.Log("server IP : " + serverName + "   port : " + inComingPort);
 
