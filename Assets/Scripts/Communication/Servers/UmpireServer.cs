@@ -1,12 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityOSC;
-using System.Text;
-using System.Threading.Tasks;
 
-public class EnemyStatusServer : MonoBehaviour {
-    // Start is called before the first frame update
+public class NewBehaviourScript : MonoBehaviour {    // Start is called before the first frame update
     #region Network Settings //----------追記
 	public string serverName;
 	public int inComingPort; //----------追記
@@ -14,18 +10,21 @@ public class EnemyStatusServer : MonoBehaviour {
 
 	private Dictionary<string, ServerLog> servers;
 
+    bool limitSflag = false;
+    bool limitEflag = false;
+
     void Awake() {
         IpGetter ipGetter = new IpGetter();
         string myIP = ipGetter.GetIp();
 
         if (myIP == HostList.phone1.ip) {
-            inComingPort = HostList.phone2.port_status;
+            inComingPort = HostList.phone2.port_umpireReceive;
         }
         else {
-            inComingPort = HostList.phone1.port_status;
+            inComingPort = HostList.phone1.port_umpireReceive;
         }
-        serverName = HostList.serverName.enemy;
-        
+        serverName = HostList.serverName.umpire;
+
         // Debug.Log("server IP : " + serverName + "   port : " + inComingPort);
 
         OSCHandler.Instance.serverInit(serverName,inComingPort); //init OSC　//----------変更
@@ -39,7 +38,7 @@ public class EnemyStatusServer : MonoBehaviour {
 		servers = OSCHandler.Instance.Servers;
     }
     
-    void LateUpdate(){
+    void LateUpdate() {
         foreach( KeyValuePair<string, ServerLog> item in servers ){
 			// If we have received at least one packet,
 			// show the last received from the log in the Debug console
@@ -51,16 +50,25 @@ public class EnemyStatusServer : MonoBehaviour {
 				// 	item.Value.packets[lastPacketIndex].Address, // OSC address
 				// 	item.Value.packets[lastPacketIndex].Data[0].ToString())); //First data value
 
-                if(item.Value.packets[lastPacketIndex].Address.ToString() == "/position"){
-                    Vector3 enemyPosition;
-                    float rotY;
-                    enemyPosition.x = (float)item.Value.packets[lastPacketIndex].Data[0];
-                    enemyPosition.y = (float)item.Value.packets[lastPacketIndex].Data[1];
-                    enemyPosition.z = (float)item.Value.packets[lastPacketIndex].Data[2];
-                    rotY = (float)item.Value.packets[lastPacketIndex].Data[3];
-                    EnemyPositionTracker.enemyPosition = enemyPosition;
-                    FootSpawn.enemyAngle = rotY;
+				if(item.Value.packets[lastPacketIndex].Address.ToString() == "/Spawn"){
+                    Vector3 spawnPosition;
+                    spawnPosition.x = (float)item.Value.packets[lastPacketIndex].Data[0];
+                    spawnPosition.y = (float)item.Value.packets[lastPacketIndex].Data[1];
+                    spawnPosition.z = (float)item.Value.packets[lastPacketIndex].Data[2];
+                    if (!Manager.pointedFlag) {
+                        Manager.spawnPoint = spawnPosition;
+                    }
 				}
+                // if(item.Value.packets[lastPacketIndex].Address.ToString() == "/Pflag" && !limitPflag){
+                //     // flag.text = "get preparedFlag";
+                //     Master.flagCount++;
+                //     limitPflag = true;
+				// }
+                // if(item.Value.packets[lastPacketIndex].Address.ToString() == "/Sflag" && !limitSflag){
+                //     // flag.text = "get startedFlag";
+                //     Manager.GameStart();
+                //     limitSflag = true;
+				// }
 			}
 		}
         // Debug.Log(Time.deltaTime);

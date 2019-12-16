@@ -27,7 +27,7 @@ public class FlagClient : MonoBehaviour {
         }
         // Debug.Log("client IP : " + ip + "   port : " + port);
 
-        OSCHandler.Instance.clientInit("Akaoni", ip,port);//ipには接続先のipアドレスの文字列を入れる。
+        OSCHandler.Instance.clientInit(HostList.clientID.enemy, ip,port);//ipには接続先のipアドレスの文字列を入れる。
     }
 
     static public void SpawnSend(Vector3 point){
@@ -35,18 +35,18 @@ public class FlagClient : MonoBehaviour {
         pointList.Add(point.x);
         pointList.Add(point.y);
         pointList.Add(point.z);
-        OSCHandler.Instance.SendMessageToClient("Akaoni","/Spawn",pointList);
+        OSCHandler.Instance.SendMessageToClient(HostList.clientID.enemy,"/Spawn",pointList);
     }
 
     static public async void ReturnPflag(){
         for (int i = 0; i < 20; i++) {
-            OSCHandler.Instance.SendMessageToClient("Akaoni","/Pflag","OK");//本来True
+            OSCHandler.Instance.SendMessageToClient(HostList.clientID.enemy,"/Pflag","OK");//本来True
             await Task.Delay(15);
         }
     }
     static public async void ReturnSflag(){
         for (int i = 0; i < 20; i++) {
-            OSCHandler.Instance.SendMessageToClient("Akaoni","/Sflag","OK");//本来True
+            OSCHandler.Instance.SendMessageToClient(HostList.clientID.enemy,"/Sflag","OK");//本来True
             await Task.Delay(15);
         }
     }

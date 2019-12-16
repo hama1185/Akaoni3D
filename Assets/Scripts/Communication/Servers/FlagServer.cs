@@ -22,13 +22,13 @@ public class FlagServer : MonoBehaviour {
         string myIP = ipGetter.GetIp();
 
         if (myIP == HostList.phone1.ip) {
-            serverName = HostList.phone2.server_flag;
             inComingPort = HostList.phone2.port_flag;
         }
         else {
-            serverName = HostList.phone1.server_flag;
             inComingPort = HostList.phone1.port_flag;
         }
+        serverName = HostList.serverName.enemy;
+
         // Debug.Log("server IP : " + serverName + "   port : " + inComingPort);
 
         OSCHandler.Instance.serverInit(serverName,inComingPort); //init OSC　//----------変更
