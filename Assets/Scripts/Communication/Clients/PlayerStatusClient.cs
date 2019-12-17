@@ -42,8 +42,6 @@ public class PlayerStatusClient : MonoBehaviour {
         elapsedTime += Time.deltaTime;
         
         if (elapsedTime > interval) {
-            elapsedTime = 0.0f;
-
             List<float> positionList = new List<float>();
             float eulerY;
 
@@ -55,6 +53,19 @@ public class PlayerStatusClient : MonoBehaviour {
             positionList.Add(eulerY);
 
             OSCHandler.Instance.SendMessageToClient(HostList.clientID.enemy,"/position",positionList);//Akaoniでいいのかな
+        }
+    }
+
+    void LateUpdate() {
+        if (elapsedTime > interval) {
+            List<float> statusList = new List<float>();
+
+            statusList.Add(PlayerStatus.relaxed);
+            statusList.Add(PlayerStatus.mind);
+
+            OSCHandler.Instance.SendMessageToClient(HostList.clientID.enemy,"/status",statusList);//Akaoniでいいのかな
+
+            elapsedTime = 0.0f;
         }
     }
 }

@@ -10,9 +10,6 @@ public class NewBehaviourScript : MonoBehaviour {    // Start is called before t
 
 	private Dictionary<string, ServerLog> servers;
 
-    bool limitSflag = false;
-    bool limitEflag = false;
-
     void Awake() {
         IpGetter ipGetter = new IpGetter();
         string myIP = ipGetter.GetIp();
@@ -59,18 +56,11 @@ public class NewBehaviourScript : MonoBehaviour {    // Start is called before t
                         Manager.spawnPoint = spawnPosition;
                     }
 				}
-                // if(item.Value.packets[lastPacketIndex].Address.ToString() == "/Pflag" && !limitPflag){
-                //     // flag.text = "get preparedFlag";
-                //     Master.flagCount++;
-                //     limitPflag = true;
-				// }
-                // if(item.Value.packets[lastPacketIndex].Address.ToString() == "/Sflag" && !limitSflag){
-                //     // flag.text = "get startedFlag";
-                //     Manager.GameStart();
-                //     limitSflag = true;
-				// }
+                if(item.Value.packets[lastPacketIndex].Address.ToString() == "Status"){
+                    PlayerStatus.relaxed = (float)item.Value.packets[lastPacketIndex].Data[0];
+                    PlayerStatus.mind = (float)item.Value.packets[lastPacketIndex].Data[1];
+				}
 			}
 		}
-        // Debug.Log(Time.deltaTime);
     }
 }

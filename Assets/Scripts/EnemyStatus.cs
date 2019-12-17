@@ -4,32 +4,11 @@ using UnityEngine;
 
 public class EnemyStatus : MonoBehaviour {
     Transform player;
-    static float MAX_SPEED = 10.0f;
 
-    // 緊張度パラメータ(仮)
-    public static float tension {set; get;} = 0.2f;
-    // public static float distaneWithPlayer {set; get;}
+    public static float relaxed {set; get;} = 50.0f;    // リラックス度
+    public static float mind {set; get;} = 50.0f;       // 集中度
 
     void Start() {
         player = GameObject.FindWithTag("Player").transform;
-    }
-
-    void Update() {
-        if (Input.GetKey(KeyCode.RightArrow)) {
-            tension += 0.1f * Time.deltaTime;
-            Debug.Log("Enemy : " + tension);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow)) {
-            tension -= 0.1f * Time.deltaTime;
-            Debug.Log("Enemy : " + tension);
-        }
-    }
-
-    // void Update() {
-    // //     distaneWithPlayer = Mathf.Pow(Mathf.Pow(Mathf.Abs(this.transform.position.x - player.position.x), 2) + Mathf.Pow(Mathf.Abs(this.transform.position.z - player.position.z), 2), 0.5f);
-    // // }
-
-    public static float GetMAX_SPEED() {
-        return MAX_SPEED;
     }
 }

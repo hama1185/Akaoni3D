@@ -61,6 +61,13 @@ public class EnemyStatusServer : MonoBehaviour {
                     EnemyPositionTracker.enemyPosition = enemyPosition;
                     FootSpawn.enemyAngle = rotY;
 				}
+                if (item.Value.packets[lastPacketIndex].Address.ToString() == "/status") {
+                    float relaxed = (float)item.Value.packets[lastPacketIndex].Data[0];
+                    float mind = (float)item.Value.packets[lastPacketIndex].Data[1];
+
+                    EnemyStatus.relaxed = relaxed;
+                    EnemyStatus.mind = mind;
+                }
 			}
 		}
         // Debug.Log(Time.deltaTime);
