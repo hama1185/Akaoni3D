@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour {    // Start is called before the first frame update
+public class UmpireServer : MonoBehaviour {    // Start is called before the first frame update
     #region Network Settings //----------追記
 	public string serverName;
 	public int inComingPort; //----------追記
@@ -39,6 +39,7 @@ public class NewBehaviourScript : MonoBehaviour {    // Start is called before t
         foreach( KeyValuePair<string, ServerLog> item in servers ){
 			// If we have received at least one packet,
 			// show the last received from the log in the Debug console
+            Debug.Log("received.");
 			if(item.Value.log.Count > 0){
 				int lastPacketIndex = item.Value.packets.Count - 1;
 
@@ -47,16 +48,16 @@ public class NewBehaviourScript : MonoBehaviour {    // Start is called before t
 				// 	item.Value.packets[lastPacketIndex].Address, // OSC address
 				// 	item.Value.packets[lastPacketIndex].Data[0].ToString())); //First data value
 
-				if(item.Value.packets[lastPacketIndex].Address.ToString() == "/Spawn"){
+				if(item.Value.packets[lastPacketIndex].Address.ToString() == "/ManageSpawn"){
                     Vector3 spawnPosition;
                     spawnPosition.x = (float)item.Value.packets[lastPacketIndex].Data[0];
-                    spawnPosition.y = (float)item.Value.packets[lastPacketIndex].Data[1];
-                    spawnPosition.z = (float)item.Value.packets[lastPacketIndex].Data[2];
+                    spawnPosition.y = 0.0f;
+                    spawnPosition.z = (float)item.Value.packets[lastPacketIndex].Data[1];
                     if (!Manager.pointedFlag) {
                         Manager.spawnPoint = spawnPosition;
                     }
 				}
-                if(item.Value.packets[lastPacketIndex].Address.ToString() == "Status"){
+                if(item.Value.packets[lastPacketIndex].Address.ToString() == "/Mindstatus"){
                     PlayerStatus.relaxed = (float)item.Value.packets[lastPacketIndex].Data[0];
                     PlayerStatus.mind = (float)item.Value.packets[lastPacketIndex].Data[1];
 				}
