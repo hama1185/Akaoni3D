@@ -5,14 +5,16 @@ using UnityEngine;
 public class VelocityController : MonoBehaviour {
     public static Vector3 inputAxis_Left {get; set;} = Vector3.zero;
     public Vector3 velocity {get; set;}
+    Vector2 fieldSize {get; set;} = new Vector2(100.0f, 100.0f);
+    public static Vector2 playArea {get; set;} = new Vector2(20.0f, 20.0f);
     float MAX_SPEED = 5.0f;
     static public float speed;
     float level;
     (string moveH, string moveV, string viewH, string viewV) key;
 
     void Start() {
-        speed = 10.0f;
-        level = 0.38f * speed;
+        speed = fieldSize[0] / playArea[0];
+        level = 0.18f * speed;
         key = KeyConfig.SetKeyConfig();
     }
 

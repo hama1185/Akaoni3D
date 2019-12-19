@@ -61,6 +61,11 @@ public class UmpireServer : MonoBehaviour {    // Start is called before the fir
                     PlayerStatus.relaxed = (float)item.Value.packets[lastPacketIndex].Data[0];
                     PlayerStatus.mind = (float)item.Value.packets[lastPacketIndex].Data[1];
 				}
+                if(item.Value.packets[lastPacketIndex].Address.ToString() == "/PlayareaSize"){
+                    float hol = (float)item.Value.packets[lastPacketIndex].Data[0];
+                    float ver = (float)item.Value.packets[lastPacketIndex].Data[1];
+                    VelocityController.playArea = new Vector2(hol, ver);
+				}
 			}
 		}
     }
