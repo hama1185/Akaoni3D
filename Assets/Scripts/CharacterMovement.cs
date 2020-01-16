@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour {
     Rigidbody character;
-    VelocityController velocityController;
+    // VelocityController velocityController;
     float sensitivity;
     (string moveH, string moveV, string viewH, string viewV) key;
     
     void Start() {
         character = this.GetComponent<Rigidbody>();
-        velocityController = this.GetComponent<VelocityController>();
-        sensitivity = 3.0f;
+        // velocityController = this.GetComponent<VelocityController>();
+        sensitivity = 1.5f;
         key = KeyConfig.SetKeyConfig();
     }
 
@@ -22,7 +22,7 @@ public class CharacterMovement : MonoBehaviour {
         
         
         // // / RealSenseによる入力
-        // character.velocity = velocityController.velocity;
+        // character.velocity = VelocityController.velocity;
 
         // / Debug.Log("speed : " + character.velocity.magnitude + "    vecter : " + character.velocity);
         // / Debug.Log(Time.deltaTime);
@@ -46,12 +46,12 @@ public class CharacterMovement : MonoBehaviour {
 		float moveLR = 0.0f;
         float moveFB = 0.0f;
         
-        moveLR = Input.GetAxis(key.moveH) * VelocityController.speed * 200.0f;
-	    moveFB = Input.GetAxis(key.moveV) * VelocityController.speed * 200.0f;
+        moveLR = Input.GetAxis(key.moveH) * VelocityController.speed;
+	    moveFB = Input.GetAxis(key.moveV) * VelocityController.speed;
 
         movement = new Vector3(moveLR, 0.0f, moveFB);
         movement = this.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).rotation * movement;
 
-        character.velocity = movement * Time.deltaTime;
+        character.velocity = movement;
 	}
 }

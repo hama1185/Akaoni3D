@@ -39,7 +39,6 @@ public class UmpireServer : MonoBehaviour {    // Start is called before the fir
         foreach( KeyValuePair<string, ServerLog> item in servers ){
 			// If we have received at least one packet,
 			// show the last received from the log in the Debug console
-            Debug.Log("received.");
 			if(item.Value.log.Count > 0){
 				int lastPacketIndex = item.Value.packets.Count - 1;
 
@@ -49,6 +48,7 @@ public class UmpireServer : MonoBehaviour {    // Start is called before the fir
 				// 	item.Value.packets[lastPacketIndex].Data[0].ToString())); //First data value
 
 				if(item.Value.packets[lastPacketIndex].Address.ToString() == "/ManageSpawn"){
+                    // Debug.Log("aaa");
                     Vector3 spawnPosition;
                     spawnPosition.x = (float)item.Value.packets[lastPacketIndex].Data[0];
                     spawnPosition.y = 0.0f;
@@ -58,13 +58,17 @@ public class UmpireServer : MonoBehaviour {    // Start is called before the fir
                     }
 				}
                 if(item.Value.packets[lastPacketIndex].Address.ToString() == "/Mindstatus"){
+                    // Debug.Log("bbb");
                     PlayerStatus.relaxed = (float)item.Value.packets[lastPacketIndex].Data[0];
                     PlayerStatus.mind = (float)item.Value.packets[lastPacketIndex].Data[1];
 				}
                 if(item.Value.packets[lastPacketIndex].Address.ToString() == "/PlayareaSize"){
+                    // Debug.Log("ccc");
                     float hol = (float)item.Value.packets[lastPacketIndex].Data[0];
                     float ver = (float)item.Value.packets[lastPacketIndex].Data[1];
+
                     VelocityController.playArea = new Vector2(hol, ver);
+                    VelocityController.SetParameter();
 				}
 			}
 		}
