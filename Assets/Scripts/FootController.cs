@@ -12,7 +12,7 @@ public class FootController : MonoBehaviour
     // Update is called once per frame
     IEnumerator Disappearing()//コルーチン
     {
-        int step = 70 + (int)(PlayerStatus.mind - EnemyStatus.relaxed);
+        int step = 120 + (int)(PlayerStatus.mind - EnemyStatus.relaxed);
         for (int i = 0; i < step; i++)
         {
             GetComponent<MeshRenderer> ().material.color = new Color (1, 1, 1, 1 - 1.0f * i / step);
