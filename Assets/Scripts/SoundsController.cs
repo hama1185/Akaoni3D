@@ -23,9 +23,8 @@ public class SoundsController : MonoBehaviour {
             footStepAudio.Play();
         }
 
-        heartBeatAudio.volume = 1.0f - (PlayerStatus.mind / 100.0f);
-        heartBeatAudio.pitch = 1.5f - (PlayerStatus.mind / 100.0f);
-
+        heartBeatAudio.volume = 1.3f - (PlayerStatus.mind - EnemyStatus.relaxed) / 100.0f;
+        heartBeatAudio.pitch = 1.3f - (PlayerStatus.mind - EnemyStatus.relaxed) / 100.0f;
         // footStepAudio.volume = 0.5f + EnemyStatus.mind / 2.0f;
     }
 }
