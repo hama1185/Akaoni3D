@@ -28,7 +28,7 @@ public class CameraAdjuster : MonoBehaviour {
             gyro[i] = gyro[i+1];
         }
         gyro[3] = phoneCam.transform.localEulerAngles.y;      
-        float subtraction = sentAngle - gyro[0] - this.transform.localEulerAngles.y;
+        float subtraction = sentAngle - gyro[0] - RealSenseServer.deltaRotation;
         if (subtraction < -180.0f) {
             subtraction += 360.0f;
         }
@@ -46,7 +46,7 @@ public class CameraAdjuster : MonoBehaviour {
         // Debug.Log(subtraction);
 
         if (Mathf.Abs(subtraction) > LEVEL) {
-            this.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, subtraction + this.transform.localEulerAngles.y, 0.0f));
+            RealSenseServer.deltaRotation += subtraction;
         }
     }
 }
