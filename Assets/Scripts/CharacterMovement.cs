@@ -22,7 +22,7 @@ public class CharacterMovement : MonoBehaviour {
         
         
         // // / RealSenseによる入力(ここから)
-        // character.velocity = VelocityController.velocity;
+        character.velocity = VelocityController.velocity;
         // // / (ここまで)
 
         // Debug.Log("speed : " + character.velocity.magnitude + "    vecter : " + character.velocity);
