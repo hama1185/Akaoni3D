@@ -14,7 +14,7 @@ public class CameraAdjuster : MonoBehaviour {
     public Text AdjustText;
     public Text SubText;
 
-    float LEVEL = 1.5f;
+    float LEVEL = 4.5f;
 
     float[] gyro;
     void Start(){
