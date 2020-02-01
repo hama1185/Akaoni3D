@@ -8,8 +8,8 @@ public class CameraInitializer : MonoBehaviour {
     void Start() {
         /// ゲームパッド入力時 GetChild 0 0 0
         /// RealSense入力時   GetChild 0 0 0 1
-        // phoneCam = this.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
-        phoneCam = this.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject;
+        phoneCam = this.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
+        // phoneCam = this.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject;
     }
 
     void Update() {
