@@ -78,8 +78,8 @@ public class RealSenseServer : MonoBehaviour {
                     }
 
                     // Debug.Log(eulerY);
-                    //cameraAdjuster.sentAngle = eulerY;
-                    //cameraAdjuster.Adjust();
+                    cameraAdjuster.sentAngle = eulerY;
+                    cameraAdjuster.Adjust();
                 }
 			}
 		}
