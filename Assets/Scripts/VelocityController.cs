@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VelocityController : MonoBehaviour {
     public static Vector3 inputAxis_Left {get; set;} = Vector3.zero;
@@ -11,12 +12,14 @@ public class VelocityController : MonoBehaviour {
     public static float speed = 5.0f;
     static float level;
     (string moveH, string moveV, string viewH, string viewV) key;
+    [SerializeField] Text message;
 
     void Start() {
         MAX_SPEED = 5.0f * (20.0f / playArea.x);
         speed = fieldSize.x / playArea.x;
         level = 0.18f * speed;
         key = KeyConfig.SetKeyConfig();
+        message.enabled = false;
     }
 
     void Update() {
@@ -25,6 +28,7 @@ public class VelocityController : MonoBehaviour {
         float magnitude = Mathf.Sqrt(Mathf.Pow(inputAxis_Left.x, 2) + Mathf.Pow(inputAxis_Left.z, 2));
         if (magnitude > MAX_SPEED) {
             inputAxis_Left = new Vector3(inputAxis_Left.x * MAX_SPEED / magnitude, 0.0f, inputAxis_Left.z * MAX_SPEED / magnitude);
+            message.enabled = true;
         }
 
         if (magnitude < level) {
@@ -32,6 +36,7 @@ public class VelocityController : MonoBehaviour {
         }
         else {
             velocity = inputAxis_Left;
+            message.enabled = false;
         }
 
         // Debug.Log(Time.deltaTime);

@@ -21,16 +21,17 @@ public class CharacterMovement : MonoBehaviour {
         
         
         
-        // // / RealSenseによる入力
+        // // / RealSenseによる入力(ここから)
         character.velocity = VelocityController.velocity;
+        // // / (ここまで)
 
-        Debug.Log("speed : " + character.velocity.magnitude + "    vecter : " + character.velocity);
-        Debug.Log(Time.deltaTime);
+        // Debug.Log("speed : " + character.velocity.magnitude + "    vecter : " + character.velocity);
+        // Debug.Log(Time.deltaTime);
 
 
 
 
-        // / ゲームパッドによる入力
+        // // / ゲームパッドによる入力(ここから)
         // Vector3 angle = Vector3.zero;
         // float rotH = 0.0f;
         // float rotV = 0.0f;
@@ -53,5 +54,6 @@ public class CharacterMovement : MonoBehaviour {
         // movement = this.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).rotation * movement;
 
         // character.velocity = movement;
+        // // / (ここまで)
 	}
 }
