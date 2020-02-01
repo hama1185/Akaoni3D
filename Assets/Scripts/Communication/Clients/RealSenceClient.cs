@@ -27,12 +27,12 @@ public class RealSenceClient : MonoBehaviour {
         }
         // Debug.Log("client IP : " + ip + "   port : " + port);
 
-        OSCHandler.Instance.clientInit("raspberry", ip,port);//ipには接続先のipアドレスの文字列を入れる。
+        OSCHandler.Instance.clientInit(HostList.clientID.raspberrypi, ip,port);//ipには接続先のipアドレスの文字列を入れる。
     }
 
     static public async void StartRealSense(){
         for (int i = 0; i < 20; i++) {
-            OSCHandler.Instance.SendMessageToClient("raspberry","/start","start");
+            OSCHandler.Instance.SendMessageToClient(HostList.clientID.raspberrypi, "/start", "start");
             await Task.Delay(15);
         }
     }

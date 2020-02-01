@@ -22,13 +22,13 @@ public class FlagServer : MonoBehaviour {
         string myIP = ipGetter.GetIp();
 
         if (myIP == HostList.phone1.ip) {
-            serverName = HostList.phone2.server_flag;
             inComingPort = HostList.phone2.port_flag;
         }
         else {
-            serverName = HostList.phone1.server_flag;
             inComingPort = HostList.phone1.port_flag;
         }
+        serverName = HostList.serverName.flag;
+
         // Debug.Log("server IP : " + serverName + "   port : " + inComingPort);
 
         OSCHandler.Instance.serverInit(serverName,inComingPort); //init OSC　//----------変更
@@ -55,7 +55,6 @@ public class FlagServer : MonoBehaviour {
 				// 	item.Value.packets[lastPacketIndex].Data[0].ToString())); //First data value
 
 				if(item.Value.packets[lastPacketIndex].Address.ToString() == "/Spawn"){
-                    // Debug.Log("a");
                     Vector3 spawnPosition;
                     spawnPosition.x = (float)item.Value.packets[lastPacketIndex].Data[0];
                     spawnPosition.y = (float)item.Value.packets[lastPacketIndex].Data[1];

@@ -19,13 +19,12 @@ public class EnemyStatusServer : MonoBehaviour {
         string myIP = ipGetter.GetIp();
 
         if (myIP == HostList.phone1.ip) {
-            serverName = HostList.phone2.server_status;
             inComingPort = HostList.phone2.port_status;
         }
         else {
-            serverName = HostList.phone1.server_status;
             inComingPort = HostList.phone1.port_status;
         }
+        serverName = HostList.serverName.status;
         
         // Debug.Log("server IP : " + serverName + "   port : " + inComingPort);
 
@@ -62,6 +61,13 @@ public class EnemyStatusServer : MonoBehaviour {
                     EnemyPositionTracker.enemyPosition = enemyPosition;
                     FootSpawn.enemyAngle = rotY;
 				}
+                if (item.Value.packets[lastPacketIndex].Address.ToString() == "/status") {
+                    float relaxed = (float)item.Value.packets[lastPacketIndex].Data[0];
+                    float mind = (float)item.Value.packets[lastPacketIndex].Data[1];
+
+                    EnemyStatus.relaxed = relaxed;
+                    EnemyStatus.mind = mind;
+                }
 			}
 		}
         // Debug.Log(Time.deltaTime);

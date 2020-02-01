@@ -21,13 +21,13 @@ public class RealSenseServer : MonoBehaviour {
         string myIP = ipGetter.GetIp();
 
         if (myIP == HostList.phone1.ip) {
-            serverName = HostList.phone2.server_realsense;
             inComingPort = HostList.phone2.port_realsense;
         }
         else {
-            serverName = HostList.phone1.server_realsense;
             inComingPort = HostList.phone1.port_realsense;
         }
+        serverName = HostList.serverName.realsense;
+
         // Debug.Log("server IP : " + serverName + "   port : " + inComingPort);
 
         OSCHandler.Instance.serverInit(serverName,inComingPort); //init OSC　//----------変更

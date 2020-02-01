@@ -31,7 +31,7 @@ public class PlayerStatusClient : MonoBehaviour {
         }
         // Debug.Log("client IP : " + ip + "   port : " + port);
 
-        OSCHandler.Instance.clientInit("Akaoni", ip,port);//ipには接続先のipアドレスの文字列を入れる。
+        OSCHandler.Instance.clientInit(HostList.clientID.enemy, ip,port);//ipには接続先のipアドレスの文字列を入れる。
     }
     
     void Start() {
@@ -42,8 +42,6 @@ public class PlayerStatusClient : MonoBehaviour {
         elapsedTime += Time.deltaTime;
         
         if (elapsedTime > interval) {
-            elapsedTime = 0.0f;
-
             List<float> positionList = new List<float>();
             float eulerY;
 
@@ -54,7 +52,20 @@ public class PlayerStatusClient : MonoBehaviour {
             positionList.Add(transform.position.z);
             positionList.Add(eulerY);
 
-            OSCHandler.Instance.SendMessageToClient("Akaoni","/position",positionList);//Akaoniでいいのかな
+            OSCHandler.Instance.SendMessageToClient(HostList.clientID.enemy,"/position",positionList);//Akaoniでいいのかな
+        }
+    }
+
+    void LateUpdate() {
+        if (elapsedTime > interval) {
+            List<float> statusList = new List<float>();
+
+            statusList.Add(PlayerStatus.relaxed);
+            statusList.Add(PlayerStatus.mind);
+
+            OSCHandler.Instance.SendMessageToClient(HostList.clientID.enemy,"/status",statusList);//Akaoniでいいのかな
+
+            elapsedTime = 0.0f;
         }
     }
 }
