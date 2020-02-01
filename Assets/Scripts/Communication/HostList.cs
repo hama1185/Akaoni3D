@@ -11,7 +11,8 @@ static public class HostList {
         8002,
         8005,
         8007,
-        8008
+        8008,
+        8009
     );
     static public Host phone2 = new Host(
         "192.168.11.59",
@@ -21,7 +22,8 @@ static public class HostList {
         8002,
         8006,
         8007,
-        8008
+        8008,
+        8009
     );
     static public string ip_audience = "192.168.11.60";
     static public string ip_umpire = "192.168.11.61";
@@ -35,7 +37,8 @@ static public class HostList {
         "status",
         "flag",
         "realsence",
-        "umpire"
+        "umpire",
+        "mind"
     );
 
     public class Host {
@@ -47,8 +50,9 @@ static public class HostList {
         public int port_audienceserver {get; set;}
         public int port_raspberrypi {get; set;}
         public int port_umpireReceive {get; set;}
+        public int port_mind {get; set;}
 
-        public Host(string ip1, string ip2, int port1, int port2, int port3, int port4, int port5, int port6) {
+        public Host(string ip1, string ip2, int port1, int port2, int port3, int port4, int port5, int port6, int port7) {
             ip = ip1;
             ip_raspberrypi = ip2;
             port_status = port1;
@@ -57,6 +61,7 @@ static public class HostList {
             port_audienceserver = port4;
             port_raspberrypi = port5;
             port_umpireReceive = port6;
+            port_mind = port7;
         }
     }
 
@@ -77,12 +82,14 @@ static public class HostList {
         public string flag;
         public string realsense;
         public string umpire;
+        public string mind;
 
-        public ServerName(string name1, string name2, string name3, string name4) {
+        public ServerName(string name1, string name2, string name3, string name4, string name5) {
             status = name1;
             flag = name2;
             realsense = name3;
             umpire = name4;
+            mind = name5;
         }
     }
 }
