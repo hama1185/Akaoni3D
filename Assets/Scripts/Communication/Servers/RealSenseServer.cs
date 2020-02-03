@@ -74,9 +74,21 @@ public class RealSenseServer : MonoBehaviour {
                     cameraAdjuster.sentAngle = eulerY;
                     cameraAdjuster.Adjust();
 
-                    velocity.x = (float)item.Value.packets[lastPacketIndex].Data[0] * Mathf.Cos(deltaRotation);
+                    float realSenseX = (float)item.Value.packets[lastPacketIndex].Data[0];
+                    float realSenseZ = (float)item.Value.packets[lastPacketIndex].Data[1];
+                    float scalerVelocity = Mathf.Sqrt(Mathf.Pow(realSenseX, 2) + Mathf.Pow(realSenseZ, 2));
+                    float realSenseAngle = Mathf.Rad2Deg * Mathf.Atan2(realSenseZ, realSenseX);
+
+                    float fixedAngle;
+                    if((realSenseX < 0 && realSenseZ > 0) || (realSenseX > 0 && realSenseZ < 0)){
+                        fixedAngle = realSenseAngle + 180 - deltaRotation;
+                    }
+                    else{
+                        fixedAngle = realSenseAngle - deltaRotation;
+                    }
+                    velocity.x =  scalerVelocity * Mathf.Cos(fixedAngle * Mathf.Deg2Rad);
                     velocity.y = 0.0f;
-                    velocity.z = (float)item.Value.packets[lastPacketIndex].Data[1] * Mathf.Sin(deltaRotation);
+                    velocity.z = scalerVelocity * Mathf.Sin(fixedAngle* Mathf.Deg2Rad);;
                     VelocityController.inputAxis_Left = velocity;
 
                     // CameraAdjusterにRealSenseから送られてきたrot.eulerAngles.yを割り当てる (float型)
