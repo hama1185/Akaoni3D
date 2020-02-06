@@ -6,7 +6,7 @@ public class FootSpawn : MonoBehaviour
 {
     public GameObject footObject;
     float time = 0;
-    public static float beatRate{set;get;} = 0.35f;
+    public static float beatRate{set;get;} = 0.35f;//ここ結局何よ
     public static float enemyAngle{set;get;}
     void Start() {
         footObject = (GameObject)Resources.Load("Prefabs/RedFoot");    
