@@ -25,11 +25,11 @@
                 gray = ( gray < 0 ) ? 0 : gray;
 
                 half R = gray + _Strength;
-                R = R + 0.3;
+                R = R + 0.15;
                 //R += PlayerStatus.tension / 4.0f;
                 R = ( R > 1.0 ) ? 1.0 : R;
 
-                c.rgb = fixed3(R, gray, gray);
+                c.rgb = fixed4(R, gray, gray, 0.5f);
                 return c;
             }
 

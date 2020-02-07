@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mono
+  m_Name: RedEffect
   m_Shader: {fileID: 4800000, guid: 2ba5dab7355dd284b9a288f1ed7990f1, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -58,7 +58,7 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _Darkness: 0.0461
+    - _Darkness: 0.09
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
