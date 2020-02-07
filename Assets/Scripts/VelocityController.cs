@@ -17,7 +17,7 @@ public class VelocityController : MonoBehaviour {
     void Start() {
         MAX_SPEED = 5.0f * (20.0f / playArea.x);
         speed = fieldSize.x / playArea.x;
-        level = 0.18f * speed;
+        level = 0.2f * speed;
         key = KeyConfig.SetKeyConfig();
         message.enabled = false;
     }
@@ -26,9 +26,13 @@ public class VelocityController : MonoBehaviour {
         inputAxis_Left *= speed;
 
         float magnitude = Mathf.Sqrt(Mathf.Pow(inputAxis_Left.x, 2) + Mathf.Pow(inputAxis_Left.z, 2));
+        
         if (magnitude > MAX_SPEED) {
             inputAxis_Left = new Vector3(inputAxis_Left.x * MAX_SPEED / magnitude, 0.0f, inputAxis_Left.z * MAX_SPEED / magnitude);
             message.enabled = true;
+        }
+        else {
+            message.enabled = false;
         }
 
         if (magnitude < level) {
@@ -36,7 +40,6 @@ public class VelocityController : MonoBehaviour {
         }
         else {
             velocity = inputAxis_Left;
-            message.enabled = false;
         }
 
         // Debug.Log(Time.deltaTime);
