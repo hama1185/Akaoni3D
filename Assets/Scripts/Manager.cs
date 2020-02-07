@@ -74,8 +74,8 @@ public class Manager : MonoBehaviour {
     }
 
     public static void CreateSpawnPointMarker(Vector3 spawnPoint) {
+        // GameObject obj = (GameObject)Resources.Load("Prefabs/SpawnPoint 1");
         GameObject obj = (GameObject)Resources.Load("Prefabs/SpawnPoint");
-
         Instantiate(obj, spawnPoint, Quaternion.identity);
     }
 }
