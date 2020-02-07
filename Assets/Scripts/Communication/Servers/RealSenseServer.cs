@@ -15,7 +15,7 @@ public class RealSenseServer : MonoBehaviour {
 	private Dictionary<string, ServerLog> servers;
     
     CameraAdjuster cameraAdjuster;
-    public static float deltaRotation{get;set;} = 0.0f;
+
     void Awake() {
         IpGetter ipGetter = new IpGetter();
         string myIP = ipGetter.GetIp();
@@ -58,11 +58,18 @@ public class RealSenseServer : MonoBehaviour {
                     Vector3 velocity;
                     Quaternion rot;
 
+                    velocity.x = (float)item.Value.packets[lastPacketIndex].Data[0];
+                    velocity.y = 0.0f;
+                    velocity.z = (float)item.Value.packets[lastPacketIndex].Data[1];
                     rot.x = (float)item.Value.packets[lastPacketIndex].Data[2];
                     rot.y = (float)item.Value.packets[lastPacketIndex].Data[3];
                     rot.z = (float)item.Value.packets[lastPacketIndex].Data[4];
                     rot.w = (float)item.Value.packets[lastPacketIndex].Data[5];
                     
+                    VelocityController.inputAxis_Left = velocity;
+
+                    // CameraAdjusterにRealSenseから送られてきたrot.eulerAngles.yを割り当てる (float型)
+                    // y軸中心の回転のずれだけを補正する (x,z軸についてもずれを補正するのはめんどそう)
                     float eulerY = rot.eulerAngles.y;
 
                     eulerY = 360.0f - eulerY;
@@ -73,27 +80,6 @@ public class RealSenseServer : MonoBehaviour {
                     // Debug.Log(eulerY);
                     cameraAdjuster.sentAngle = eulerY;
                     cameraAdjuster.Adjust();
-
-                    float realSenseX = (float)item.Value.packets[lastPacketIndex].Data[0];
-                    float realSenseZ = (float)item.Value.packets[lastPacketIndex].Data[1];
-                    float scalerVelocity = Mathf.Sqrt(Mathf.Pow(realSenseX, 2) + Mathf.Pow(realSenseZ, 2));
-                    float realSenseAngle = Mathf.Rad2Deg * Mathf.Atan2(realSenseZ, realSenseX);
-
-                    float fixedAngle;
-                    if((realSenseX < 0 && realSenseZ > 0) || (realSenseX > 0 && realSenseZ < 0)){
-                        fixedAngle = realSenseAngle + 180 - deltaRotation;
-                    }
-                    else{
-                        fixedAngle = realSenseAngle - deltaRotation;
-                    }
-                    velocity.x =  scalerVelocity * Mathf.Cos(fixedAngle * Mathf.Deg2Rad);
-                    velocity.y = 0.0f;
-                    velocity.z = scalerVelocity * Mathf.Sin(fixedAngle* Mathf.Deg2Rad);;
-                    VelocityController.inputAxis_Left = velocity;
-
-                    // CameraAdjusterにRealSenseから送られてきたrot.eulerAngles.yを割り当てる (float型)
-                    // y軸中心の回転のずれだけを補正する (x,z軸についてもずれを補正するのはめんどそう)
-                    
                 }
 			}
 		}
