@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class RedEffectController : MonoBehaviour {
     public Material red;
-    float max = 0.06f;
-    float min = 0.0f;
+    float max = 0.1f;
 
     void Update() {
-        red.SetFloat("_Darkness", min + max * PlayerStatus.mind/100.0f);
+        red.SetFloat("_Darkness", max - max * PlayerStatus.mind/100.0f);
     }
 }
