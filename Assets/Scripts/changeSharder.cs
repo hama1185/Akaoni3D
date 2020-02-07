@@ -19,9 +19,7 @@ public class changeSharder : MonoBehaviour
     // Update is called once per frame
     void Update(){
         // Materialクラスの`Set****`メソッドを使ってシェーダに値を送信
-        if(PlayerStatus.mind == 0){
-            PlayerStatus.mind = 0.1f;
-        }
+        
         material.SetColor("_Color", new Color(r, g, b, PlayerStatus.mind / 100));
     }
 }
