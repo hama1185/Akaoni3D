@@ -23,7 +23,12 @@ public class SoundsController : MonoBehaviour {
         if (Manager.startFlag && !footStepAudio.isPlaying) {
             footStepAudio.Play();
         }
-
+        if(PlayerStatus.mind == 0){
+            PlayerStatus.mind = 0.1f;
+        }
+        if(EnemyStatus.relaxed == 0){
+            EnemyStatus.relaxed = 0.1f;
+        }
         heartBeatAudio.volume = 1.0f - 8 * (PlayerStatus.mind) / 1000.0f;//0.2から1.0
         heartBeatAudio.pitch = 1.25f - (PlayerStatus.mind) / 200.0f;//0.75から1.25
         // footStepAudio.volume = 0.5f + EnemyStatus.mind / 2.0f;
