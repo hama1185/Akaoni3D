@@ -26,7 +26,7 @@ public class Manager : MonoBehaviour {
         }
         else if (!setuped){
             setupTime += Time.deltaTime;
-            timeText.text = "        setup now... \n             " + (setupEnd - setupTime).ToString("f2");
+            timeText.text = "  準備中...    " + (setupEnd - setupTime).ToString("f2");
             // Debug.Log(setupTime);
         }
         else {
