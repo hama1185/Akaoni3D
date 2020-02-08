@@ -14,7 +14,7 @@ public class Manager : MonoBehaviour {
     static public bool endFlag = false;
     public static Vector3 spawnPoint {set; get;} = Vector3.zero;
     float setupTime = 0.0f;
-    float setupEnd = 3.0f;
+    float setupEnd = 30.0f;
     public Text timeText;
 
     void Update() {
