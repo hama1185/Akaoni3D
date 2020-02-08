@@ -17,6 +17,7 @@ public class Master : MonoBehaviour {
             if(!Manager.startFlag){
                 FlagClient.ReturnSflag();//村人Manager.GameStartさせる
                 Manager.GameStart();//鬼Manager.gameStartさせる
+                GameObject.FindWithTag("Player").transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetComponent<PostEffect>().enabled = true;
             }
         }
     }
