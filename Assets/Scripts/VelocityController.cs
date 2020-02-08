@@ -8,8 +8,8 @@ public class VelocityController : MonoBehaviour {
     public static Vector3 velocity {get; set;}
     static Vector2 fieldSize {get; set;} = new Vector2(100.0f, 100.0f);
     public static Vector2 playArea {get; set;} = new Vector2(20.0f, 20.0f);
-    static float MAX_SPEED = 5.0f;
-    public static float speed = 5.0f;
+    static float MAX_SPEED = 10.0f;
+    public static float speed = 7.5f;
     static float level;
     (string moveH, string moveV, string viewH, string viewV) key;
     [SerializeField] Text message;
