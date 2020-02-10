@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CameraAdjuster : MonoBehaviour {
     public float sentAngle{get; set;} = 0.0f;
     GameObject phoneCam;
+    GameObject initializer;
     GameObject trackSpace;
 
     public Text TrackText;
@@ -19,6 +20,7 @@ public class CameraAdjuster : MonoBehaviour {
     float[] gyro;
     void Start(){
         phoneCam = this.transform.GetChild(0).GetChild(0).GetChild(1).gameObject;
+        initializer = this.transform.parent.gameObject;
         trackSpace = this.transform.GetChild(0).GetChild(0).gameObject;
         gyro = new float[4] {0.0f ,0.0f ,0.0f, 0.0f};
     }
@@ -27,7 +29,8 @@ public class CameraAdjuster : MonoBehaviour {
         for(int i = 0;i < 3; i++){
             gyro[i] = gyro[i+1];
         }
-        gyro[3] = phoneCam.transform.localEulerAngles.y;      
+        gyro[3] = phoneCam.transform.localEulerAngles.y - initializer.transform.localEulerAngles.y;
+        // gyro[3] = phoneCam.transform.localEulerAngles.y;
         float subtraction = sentAngle - gyro[0] - this.transform.localEulerAngles.y;
         if (subtraction < -180.0f) {
             subtraction += 360.0f;

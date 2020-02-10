@@ -37,11 +37,12 @@ public class CharacterMovement : MonoBehaviour {
         // float rotV = 0.0f;
 
         // rotH = Input.GetAxis(key.viewH) * sensitivity;
-	    // // rotV = Input.GetAxis(key.viewV) * sensibility;
+	    // // rotV = Input.GetAxis(key.viewV) * sensitivity;
 
         // angle = new Vector3(rotV, rotH, 0.0f);
 
-        // this.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).transform.Rotate(angle);
+        // // this.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).transform.Rotate(angle);
+        // this.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(1).transform.Rotate(angle); // PCデバッグでRealSenseを使う場合
 
         // Vector3 movement = Vector3.zero;
 		// float moveLR = 0.0f;
