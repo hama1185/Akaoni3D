@@ -28,15 +28,15 @@ public class CameraAdjuster : MonoBehaviour {
         gyro = new float[4] {0.0f ,0.0f ,0.0f, 0.0f};
     }
 
-    // void Update() {
-        
-    // }
-
-    public void Adjust(){
+    void Update() {
         for(int i = 0;i < 3; i++){
             gyro[i] = gyro[i+1];
         }
-        gyro[3] = phoneCam.transform.localEulerAngles.y + initializer.transform.localEulerAngles.y;
+        gyro[3] = phoneCam.transform.localEulerAngles.y + initializer.transform.localEulerAngles.y;    
+    }
+
+    public void Adjust(){
+        
         
         if (++activateCount >= 4 && !isActive) {
             isActive = true;
