@@ -14,7 +14,7 @@ public class Manager : MonoBehaviour {
     static public bool endFlag = false;
     public static Vector3 spawnPoint {set; get;} = Vector3.zero;
     float setupTime = 0.0f;
-    float setupEnd = 30.0f;
+    float setupEnd = 60.0f;
     public Text timeText;
 
     void Update() {
@@ -35,7 +35,7 @@ public class Manager : MonoBehaviour {
 
         if (startFlag) {
             time += Time.deltaTime;
-            if (time > 30.0f) {
+            if (time > 60.0f) {
                 StartOgreMove();
             }
         }
