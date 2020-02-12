@@ -5,7 +5,7 @@ using UnityOSC;
 using System.Text;
 using System.Threading.Tasks;
 
-public class AudienceClient : MonoBehaviour {
+public class AudienceEnemyClient : MonoBehaviour {
     // Start is called before the first frame update
     #region Network Settings //----------追記
     public string ip;
@@ -34,9 +34,8 @@ public class AudienceClient : MonoBehaviour {
     }
     
     void Start() {
-        CameraAngle = this.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject;
 
-        if(GameObject.FindWithTag("Player").name == "Ogre"){
+        if(GameObject.FindWithTag("Enemy").name == "Ogre"){
             address = "/Ogre";
         }
         else {
@@ -52,13 +51,13 @@ public class AudienceClient : MonoBehaviour {
         statusList.Add(this.transform.position.y);
         statusList.Add(this.transform.position.z);
 
-        statusList.Add(CameraAngle.transform.rotation.x);
-        statusList.Add(CameraAngle.transform.rotation.y);
-        statusList.Add(CameraAngle.transform.rotation.z);
-        statusList.Add(CameraAngle.transform.rotation.w);
+        statusList.Add(0.0f);
+        statusList.Add(0.0f);
+        statusList.Add(0.0f);
+        statusList.Add(1.0f);
 
-        statusList.Add(PlayerStatus.mind);
-        statusList.Add(PlayerStatus.relaxed);
+        statusList.Add(50.0f);
+        statusList.Add(50.0f);
 
         OSCHandler.Instance.SendMessageToClient(HostList.clientID.audience, address, statusList);//Akaoniでいいのかな
     }
