@@ -46,17 +46,20 @@ public class AudienceClient : MonoBehaviour {
 
     void Update() {
         // Debug.Log("a");
-        List<float> transformList = new List<float>();
+        List<float> charList = new List<float>();
 
-        transformList.Add(this.transform.position.x);
-        transformList.Add(this.transform.position.y);
-        transformList.Add(this.transform.position.z);
+        charList.Add(this.transform.position.x);
+        charList.Add(this.transform.position.y);
+        charList.Add(this.transform.position.z);
 
-        transformList.Add(CameraAngle.transform.rotation.x);
-        transformList.Add(CameraAngle.transform.rotation.y);
-        transformList.Add(CameraAngle.transform.rotation.z);
-        transformList.Add(CameraAngle.transform.rotation.w);
+        charList.Add(CameraAngle.transform.rotation.x);
+        charList.Add(CameraAngle.transform.rotation.y);
+        charList.Add(CameraAngle.transform.rotation.z);
+        charList.Add(CameraAngle.transform.rotation.w);
 
-        OSCHandler.Instance.SendMessageToClient(HostList.clientID.audience, address, transformList);//Akaoniでいいのかな
+        charList.Add(PlayerStatus.mind);
+        charList.Add(PlayerStatus.relaxed);
+
+        OSCHandler.Instance.SendMessageToClient(HostList.clientID.audience, address, charList);//Akaoniでいいのかな
     }
 }
