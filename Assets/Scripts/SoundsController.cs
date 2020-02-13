@@ -27,8 +27,8 @@ public class SoundsController : MonoBehaviour {
         float eachOtherDistance = Vector3.Distance(player.transform.position,EnemyPositionTracker.enemyPosition);
 
         if (Manager.startFlag) {
-            heartBeatAudio.volume = 1.0f - 8 * (PlayerStatus.mind) / 1000.0f;//0.2から1.0
-            heartBeatAudio.pitch = 1.4f - (PlayerStatus.mind) / 160.0f;
+            heartBeatAudio.volume = 1.0f - 8 * (PlayerStatus.relaxed) / 1000.0f;//0.2から1.0
+            heartBeatAudio.pitch = 1.4f - (PlayerStatus.relaxed) / 160.0f;
         }
         else {
             heartBeatAudio.volume = 0.0f;
