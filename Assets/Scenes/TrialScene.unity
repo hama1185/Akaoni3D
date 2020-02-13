@@ -579,7 +579,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.76387024
+      value: 0.7562332
       inSlope: -2.9301515
       outSlope: -2.9301515
       tangentMode: 0
@@ -588,7 +588,7 @@ AudioSource:
       outWeight: 0.114982575
     - serializedVersion: 3
       time: 0.21511018
-      value: 0.41460457
+      value: 0.40696755
       inSlope: -1.0873438
       outSlope: -1.0873438
       tangentMode: 0
@@ -597,7 +597,7 @@ AudioSource:
       outWeight: 0.58309877
     - serializedVersion: 3
       time: 0.4759254
-      value: 0.19496363
+      value: 0.18732661
       inSlope: -0.6369762
       outSlope: -0.6369762
       tangentMode: 0
@@ -606,7 +606,7 @@ AudioSource:
       outWeight: 0.70624226
     - serializedVersion: 3
       time: 0.66444314
-      value: 0.08783819
+      value: 0.080201164
       inSlope: -0.3367025
       outSlope: -0.3367025
       tangentMode: 0
@@ -615,7 +615,7 @@ AudioSource:
       outWeight: 1
     - serializedVersion: 3
       time: 0.83882445
-      value: 0.02535671
+      value: 0.017719686
       inSlope: -0.21163875
       outSlope: -0.21163875
       tangentMode: 0
@@ -624,7 +624,7 @@ AudioSource:
       outWeight: 1
     - serializedVersion: 3
       time: 1
-      value: 0.0048217773
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2998,6 +2998,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7076733512835049559, guid: 097501fc82e1c34469424ecb616a3098,
         type: 2}
+    - target: {fileID: 8282500, guid: 01ac61172cf97144dbbfbc83fc317917, type: 3}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01ac61172cf97144dbbfbc83fc317917, type: 3}
 --- !u!1001 &573449235
@@ -6035,7 +6039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8214860, guid: 27ad1d4b823b95243a1e74fc7c44f791, type: 3}
       propertyPath: m_Volume
-      value: 0.25
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8214860, guid: 27ad1d4b823b95243a1e74fc7c44f791, type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -6246,6 +6250,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7076733512835049559, guid: 097501fc82e1c34469424ecb616a3098,
         type: 2}
+    - target: {fileID: 8297638, guid: f4da384b50a3b8f42b5b5315740afb00, type: 3}
+      propertyPath: m_Volume
+      value: 0.85
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4da384b50a3b8f42b5b5315740afb00, type: 3}
 --- !u!1 &1171896699
