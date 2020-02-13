@@ -9,7 +9,7 @@ public class EnterFootRate : MonoBehaviour
     // Update is called once per frame
     void Update(){
         //例
-        if(EnemyStatus.relaxed >= 20.0f && EnemyStatus.relaxed < 40.0f){
+        if(EnemyStatus.mind >= 20.0f && EnemyStatus.mind < 40.0f){
             FootSpawn.beatRate = 0.35f;
         }
     }
